@@ -4,7 +4,7 @@ defmodule Mix.Tasks.Cotton.Lint do
 
   ```
   mix credo --strict
-  mix dialyzer --halt-exit-status
+  mix dialyzer
   mix inch
   ```
   """
