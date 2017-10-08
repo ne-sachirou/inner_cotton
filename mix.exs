@@ -23,7 +23,7 @@ defmodule InnerCotton.Mixfile do
       {:credo, "~> 0.8", runtime: false},
       {:dialyxir, "~> 0.5", runtime: false},
       {:inch_ex, "~> 0.5", runtime: false},
-      {:propcheck, "~> 0.0", runtime: false},
+      {:propcheck, "~> 1.0", runtime: false},
     ]
   end
 
