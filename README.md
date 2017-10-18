@@ -1,7 +1,7 @@
 # InnerCotton
 Elixir Lint & test collection.
 
-[![Hex.pm](https://img.shields.io/hexpm/v/unner_cotton.svg)](https://hex.pm/packages/unner_cotton)
+[![Hex.pm](https://img.shields.io/hexpm/v/inner_cotton.svg)](https://hex.pm/packages/inner_cotton)
 
 ## Installation
 
@@ -16,7 +16,7 @@ end
 
 & `mix deps.get`.
 
-List
+Lint
 --
 ```sh
 mix cotton.lint
