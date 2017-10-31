@@ -5,7 +5,7 @@ defmodule Mix.Tasks.Cotton.Lint do
   ```
   mix credo --strict
   mix dialyzer
-  mix inch
+  mix inch --pedantic
   ```
   """
 
@@ -14,7 +14,7 @@ defmodule Mix.Tasks.Cotton.Lint do
   @shortdoc "Lint by Credo & check types by Dialyzer"
 
   @doc """
-  Callback
+  Lint by Credo & check types by Dialyzer.
   """
   @spec run([binary]) :: any
   def run(_args) do

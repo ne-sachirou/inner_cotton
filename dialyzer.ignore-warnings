@@ -1,3 +1,6 @@
 :0: Unknown function 'Elixir.Mix.Task':run/1
 :0: Unknown function 'Elixir.Mix.Task':run/2
+:0: Unknown function 'Elixir.RelaxYaml':'encode!'/1
+:0: Unknown function 'Elixir.RelaxYaml.Decoder':read_from_file/1
+lib/mix/tasks/cotton/init.ex:1: Callback info about the 'Elixir.Mix.Task' behaviour is not available
 lib/mix/tasks/cotton/lint.ex:1: Callback info about the 'Elixir.Mix.Task' behaviour is not available
