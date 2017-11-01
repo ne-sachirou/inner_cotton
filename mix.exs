@@ -35,7 +35,7 @@ defmodule InnerCotton.Mixfile do
       {:ex_doc, "~> 0.16", only: :dev, runtime: false},
       {:inch_ex, "~> 0.5", runtime: false},
       {:propcheck, "~> 1.0"},
-      {:relax_yaml, "~> 0.1", only: :dev, runtime: false},
+      {:relax_yaml, "~> 0.1", runtime: false},
     ]
   end
 
