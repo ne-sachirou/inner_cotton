@@ -1,6 +1,6 @@
 InnerCotton
 ==
-Elixir Lint & test collection.
+Collection of recommended Elixir check utilities.
 
 [![Hex.pm](https://img.shields.io/hexpm/v/inner_cotton.svg)](https://hex.pm/packages/inner_cotton)
 [![Build Status](https://travis-ci.org/ne-sachirou/inner_cotton.svg?branch=master)](https://travis-ci.org/ne-sachirou/inner_cotton)
@@ -10,7 +10,7 @@ InnerCotton is a collection of recommended Elixir check utilities. It contains,
 * [Credo][Credo] : Lint, coding style enhancer.
 * [Dialyxir][Dialyxir] : Type checker using Dialyzer.
 * [InchEx][InchEx] : Document (ExDoc) improver.
-* [PropCheck][PropCheck] : Property base testing like QuickCheck.
+* [stream_data][stream_data] : Property base testing like QuickCheck.
 
 Installation
 --
@@ -45,7 +45,7 @@ runs all checks. Now InnerCotton runs [`mix credo --strict`][Credo], [`mix dialy
 
 Test
 --
-InnerCotton installs [PropCheck][PropCheck] in your project. You can use it in your test.
+InnerCotton installs [stream_data][stream_data] in your project. You can use it in your test.
 
 Update InnerCotton
 --
@@ -71,4 +71,4 @@ mix test
 [Credo]: https://hex.pm/packages/credo
 [Dialyxir]: https://hex.pm/packages/dialyxir
 [InchEx]: https://hex.pm/packages/inch_ex
-[PropCheck]: https://hex.pm/packages/propcheck
+[stream_data]: https://hex.pm/packages/stream_data

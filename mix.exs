@@ -6,7 +6,7 @@ defmodule InnerCotton.Mixfile do
       app: :inner_cotton,
       build_embedded: Mix.env == :prod,
       deps: deps(),
-      description: "Elixir Lint & test collection.",
+      description: "Collection of recommended Elixir check utilities.",
       dialyzer: [
         ignore_warnings: "dialyzer.ignore-warnings",
         plt_add_apps: [:mix],
@@ -35,8 +35,8 @@ defmodule InnerCotton.Mixfile do
       {:dialyxir, "~> 0.5", runtime: false},
       {:ex_doc, "~> 0.16", only: :dev, runtime: false},
       {:inch_ex, "~> 0.5", runtime: false},
-      {:propcheck, "~> 1.0"},
       {:relax_yaml, "~> 0.1", runtime: false},
+      {:stream_data, "~> 0.1"},
     ]
   end
 
