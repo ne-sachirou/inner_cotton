@@ -9,6 +9,7 @@ defmodule InnerCotton.Mixfile do
       description: "Elixir Lint & test collection.",
       dialyzer: [
         ignore_warnings: "dialyzer.ignore-warnings",
+        plt_add_apps: [:mix],
       ],
       elixir: "~> 1.4",
       package: package(),
