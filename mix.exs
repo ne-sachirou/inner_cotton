@@ -34,6 +34,7 @@ defmodule InnerCotton.Mixfile do
       {:credo, "~> 0.8", runtime: false},
       {:dialyxir, "~> 0.5", runtime: false},
       {:ex_doc, "~> 0.16", only: :dev, runtime: false},
+      {:eye_drops, "~> 1.3", runtime: false},
       {:inch_ex, "~> 0.5", runtime: false},
       {:relax_yaml, "~> 0.1", runtime: false},
       {:stream_data, "~> 0.1"},
