@@ -20,7 +20,7 @@ Add `inner_cotton` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:inner_cotton, "~> 0.1", only: [:dev, :test]},
+    {:inner_cotton, "~> 0.2", only: [:dev, :test]},
     # {:inner_cotton, github: "ne-sachirou/inner_cotton", only: [:dev, :test]},
   ]
 end

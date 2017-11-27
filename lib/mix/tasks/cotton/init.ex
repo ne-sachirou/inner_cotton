@@ -58,14 +58,13 @@ defmodule Mix.Tasks.Cotton.Init do
     yaml = "language: elixir\n" <> (config
       |> Map.delete("language")
       |> Map.merge(%{
-        "elixir" => [
-          "1.4.5",
-          "1.5.2",
-        ],
-        "otp_release" => [
-          "19.3",
-          "20.1",
-        ],
+        "elixir" => ~w(
+          1.5.2
+        ),
+        "otp_release" => ~w(
+          19.3
+          20.1
+        ),
       })
       |> RelaxYaml.encode!)
     File.write! ".travis.yml", yaml

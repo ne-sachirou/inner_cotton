@@ -11,10 +11,10 @@ defmodule InnerCotton.Mixfile do
         ignore_warnings: "dialyzer.ignore-warnings",
         plt_add_apps: [:mix],
       ],
-      elixir: "~> 1.4",
+      elixir: "~> 1.5",
       package: package(),
       start_permanent: Mix.env == :prod,
-      version: "0.1.0",
+      version: "0.2.0",
 
       # Docs
       docs: [
