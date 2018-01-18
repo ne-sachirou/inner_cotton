@@ -12,11 +12,11 @@ InnerCotton is a collection of recommended Elixir check utilities. It contains,
 * [ExCoveralls][ExCoveralls] : Mesure test coverage.
 * [EyeDrops][EyeDrops] : File change watcher.
 * [InchEx][InchEx] : Document (ExDoc) improver.
+* [mix format][formatter] : Community standard code formatter.
 * [stream_data][stream_data] : Property base testing like QuickCheck.
 
 Installation
 --
-
 Add `inner_cotton` to your list of dependencies in `mix.exs`:
 
 ```elixir
@@ -43,7 +43,7 @@ Lint
 mix cotton.lint
 ```
 
-runs all checks. Now InnerCotton runs [`mix credo --strict`][Credo], [`mix dialyzer`][Dialyxir] & [`mix inch --pedantic`][InchEx].
+runs all checks. Now InnerCotton runs [`mix format --check-formatted`][formatter], [`mix credo --strict`][Credo], [`mix dialyzer`][Dialyxir] & [`mix inch --pedantic`][InchEx].
 
 Test
 --
@@ -88,5 +88,6 @@ mix test
 [Dialyxir]: https://hex.pm/packages/dialyxir
 [ExCoveralls]: https://hex.pm/packages/excoveralls
 [EyeDrops]: https://hex.pm/packages/eye_drops
+[formatter]: https://hexdocs.pm/elixir/Code.html#format_string!/2
 [InchEx]: https://hex.pm/packages/inch_ex
 [stream_data]: https://hex.pm/packages/stream_data
