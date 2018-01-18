@@ -1,14 +1,14 @@
 defmodule Mix.Tasks.Cotton.Watch do
   @moduledoc """
-  Experimental: EyeDrops
+  Watch file changes then run lint & test.
   """
 
   use Mix.Task
 
-  @shortdoc "Experimental: EyeDrops"
+  @shortdoc "Watch file changes then run lint & test"
 
   @doc """
-  Experimental: EyeDrops
+  Watch file changes then run lint & test.
   """
   @spec run([binary]) :: any
   def run(_args) do
