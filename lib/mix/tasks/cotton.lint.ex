@@ -38,18 +38,22 @@ defmodule Mix.Tasks.Cotton.Lint do
           Task.async(fn ->
             if Mix.Tasks.Docs in Mix.Task.load_all(),
               do: Mix.Shell.IO.cmd("mix inch --pedantic"),
-              else: 0
+              else: -1
           end)
         ],
         &Task.await(&1, :infinity)
       )
 
-    for {name, status} <- [format: format, credo: credo, dialyzer: dialyzer, inch: inch] do
+    for {name, status} <- [format: format, credo: credo, dialyzer: dialyzer, inch: inch],
+        status >= 0 do
       IO.puts(
         String.pad_trailing(to_string(name), 9) <> ":\t" <> if(0 === status, do: "ok", else: "ng")
       )
     end
 
-    :erlang.halt(format + credo + dialyzer + inch)
+    case format + credo + dialyzer + max(0, inch) do
+      0 -> nil
+      exit_status -> :erlang.halt(exit_status)
+    end
   end
 end
