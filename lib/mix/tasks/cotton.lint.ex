@@ -19,14 +19,29 @@ defmodule Mix.Tasks.Cotton.Lint do
   """
   @spec run([binary]) :: any
   def run(_args) do
-    Mix.Task.run("format", ["--check-formatted"])
-    Mix.Task.run("credo", ["--strict"])
+    Mix.Task.run("compile")
 
-    case Mix.Shell.IO.cmd("mix dialyzer --halt-exit-status") do
-      0 -> nil
-      exit_status -> :erlang.halt(exit_status)
+    [format, credo, dialyzer, inch] =
+      Enum.map(
+        [
+          Task.async(fn -> Mix.Shell.IO.cmd("mix format --check-formatted") end),
+          Task.async(fn -> Mix.Shell.IO.cmd("mix credo --strict") end),
+          Task.async(fn -> Mix.Shell.IO.cmd("mix dialyzer --halt-exit-status") end),
+          Task.async(fn ->
+            if Mix.Tasks.Docs in Mix.Task.load_all(),
+              do: Mix.Shell.IO.cmd("mix inch --pedantic"),
+              else: 0
+          end)
+        ],
+        &Task.await(&1, :infinity)
+      )
+
+    for {name, status} <- [format: format, credo: credo, dialyzer: dialyzer, inch: inch] do
+      IO.puts(
+        String.pad_trailing(to_string(name), 9) <> ":\t" <> if(0 === status, do: "ok", else: "ng")
+      )
     end
 
-    if Mix.Tasks.Docs in Mix.Task.load_all(), do: Mix.Task.run("inch", ["--pedantic"])
+    :erlang.halt(format + credo + dialyzer + inch)
   end
 end
