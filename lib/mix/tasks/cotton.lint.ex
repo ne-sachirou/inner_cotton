@@ -8,6 +8,10 @@ defmodule Mix.Tasks.Cotton.Lint do
   mix dialyzer
   mix inch --pedantic
   ```
+
+  Option:
+
+  --fix : Auto correct errors if available.
   """
 
   use Mix.Task
@@ -18,13 +22,17 @@ defmodule Mix.Tasks.Cotton.Lint do
   Lint by Credo & check types by Dialyzer.
   """
   @spec run([binary]) :: any
-  def run(_args) do
+  def run(args) do
+    fix? = "--fix" in args
     Mix.Task.run("compile")
 
     [format, credo, dialyzer, inch] =
       Enum.map(
         [
-          Task.async(fn -> Mix.Shell.IO.cmd("mix format --check-formatted") end),
+          Task.async(fn ->
+            if fix?, do: Mix.Shell.IO.cmd("mix format --check-equivalent")
+            Mix.Shell.IO.cmd("mix format --check-formatted")
+          end),
           Task.async(fn -> Mix.Shell.IO.cmd("mix credo --strict") end),
           Task.async(fn -> Mix.Shell.IO.cmd("mix dialyzer --halt-exit-status") end),
           Task.async(fn ->
