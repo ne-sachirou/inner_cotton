@@ -45,6 +45,12 @@ mix cotton.lint
 
 runs all checks. Now InnerCotton runs [`mix format --check-formatted`][formatter], [`mix credo --strict`][Credo], [`mix dialyzer`][Dialyxir] & [`mix inch --pedantic`][InchEx].
 
+```sh
+mix cotton.lint --fix
+```
+
+auto correct errors if available.
+
 Test
 --
 InnerCotton installs [stream_data][stream_data] in your project. You can use it in your test.
