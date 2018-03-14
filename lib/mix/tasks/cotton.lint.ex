@@ -24,7 +24,7 @@ defmodule Mix.Tasks.Cotton.Lint do
   @spec run([binary]) :: any
   def run(args) do
     fix? = "--fix" in args
-    Mix.Task.run("compile")
+    Mix.Task.run("cmd", ["mix do deps.get, compile"])
 
     [format, credo, dialyzer, inch] =
       Enum.map(
