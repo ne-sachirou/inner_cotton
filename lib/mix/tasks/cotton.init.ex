@@ -85,11 +85,11 @@ defmodule Mix.Tasks.Cotton.Init do
          |> Map.merge(%{
            "elixir" => ~w(
           1.5.3
-          1.6.1
+          1.6.4
         ),
            "otp_release" => ~w(
           19.3
-          20.1
+          20.2
         )
          })
          |> RelaxYaml.encode!())
