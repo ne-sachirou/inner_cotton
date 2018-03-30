@@ -38,7 +38,7 @@ defmodule InnerCotton.Mixfile do
 
   defp deps do
     [
-      {:credo, "~> 0.8", runtime: false},
+      {:credo, "~> 0.9", runtime: false},
       {:dialyxir, "~> 0.5", runtime: false},
       {:excoveralls, "~> 0.8"},
       {:ex_doc, "~> 0.18", only: :dev, runtime: false},
