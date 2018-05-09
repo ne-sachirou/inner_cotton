@@ -9,7 +9,7 @@ defmodule InnerCotton.Mixfile do
       description: "Collection of recommended Elixir check utilities.",
       dialyzer: [
         ignore_warnings: "dialyzer.ignore-warnings",
-        plt_add_apps: [:mix]
+        plt_add_apps: [:mix, :relax_yaml]
       ],
       elixir: "~> 1.5",
       package: package(),
