@@ -29,7 +29,7 @@ defmodule InnerCotton.Mixfile do
         extras: ["README.md"]
       ],
       homepage_url: "https://github.com/ne-sachirou/inner_cotton",
-      name: "Inner_Cotton",
+      name: "InnerCotton",
       source_url: "https://github.com/ne-sachirou/inner_cotton"
     ]
   end
@@ -52,7 +52,7 @@ defmodule InnerCotton.Mixfile do
   def package do
     [
       files: ["LICENSE", "README.md", "mix.exs", "lib"],
-      licenses: ["GPL-3.0"],
+      licenses: ["GPL-3.0-or-later"],
       links: %{
         GitHub: "https://github.com/ne-sachirou/inner_cotton"
       },
