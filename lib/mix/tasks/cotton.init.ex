@@ -70,7 +70,7 @@ defmodule Mix.Tasks.Cotton.Init do
   defp init_travis do
     IO.puts("Initialize .travis.yml")
     {:ok, _} = Application.ensure_all_started(:yamerl)
-    File.touch(".travis.yml")
+    File.touch!(".travis.yml")
 
     config =
       case Decoder.read_from_file(".travis.yml") do
@@ -78,22 +78,20 @@ defmodule Mix.Tasks.Cotton.Init do
         config -> config
       end
 
-    yaml =
-      "language: elixir\n" <>
-        (config
-         |> Map.delete("language")
-         |> Map.merge(%{
-           "elixir" => ~w(
-          1.5.3
-          1.6.5
-        ),
-           "otp_release" => ~w(
-          19.3
-          20.3
-        )
-         })
-         |> RelaxYaml.encode!())
+    config =
+      config
+      |> Map.merge(%{
+        "elixir" => ~w(1.5.3 1.6.6),
+        "otp_release" => ~w(20.3 21.0)
+      })
+      |> update_in(["matrix"], &(&1 || %{"exclude" => []}))
+      |> update_in(["matrix", "exclude"], fn exclude ->
+        if Enum.any?(exclude, &(&1["elixir"] == "1.5.3" and &1["otp_release"] == "21.0")),
+          do: exclude,
+          else: [%{"elixir" => "1.5.3", "otp_release" => "21.0"} | exclude]
+      end)
 
+    yaml = "language: elixir\n" <> (config |> Map.delete("language") |> RelaxYaml.encode!(config))
     File.write!(".travis.yml", yaml)
   end
 end
