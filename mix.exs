@@ -8,10 +8,11 @@ defmodule InnerCotton.Mixfile do
       deps: deps(),
       description: "Collection of recommended Elixir check utilities.",
       dialyzer: [
+        flags: [:no_undefined_callbacks],
         ignore_warnings: "dialyzer.ignore-warnings",
-        plt_add_apps: [:mix, :relax_yaml]
+        remove_defaults: [:unknown]
       ],
-      elixir: "~> 1.5",
+      elixir: "~> 1.6",
       package: package(),
       preferred_cli_env: [
         coveralls: :test,
@@ -39,7 +40,7 @@ defmodule InnerCotton.Mixfile do
   defp deps do
     [
       {:credo, "~> 0.9", runtime: false},
-      {:dialyxir, "~> 0.5", runtime: false},
+      {:dialyxir, "~> 1.0.0-rc.2", runtime: false},
       {:excoveralls, "~> 0.8"},
       {:ex_doc, "~> 0.18", only: :dev, runtime: false},
       {:eye_drops, "~> 1.3", runtime: false},
