@@ -12,7 +12,7 @@ defmodule InnerCotton.Mixfile do
         ignore_warnings: "dialyzer.ignore-warnings",
         remove_defaults: [:unknown]
       ],
-      elixir: "~> 1.5",
+      elixir: "~> 1.6",
       package: package(),
       preferred_cli_env: [
         coveralls: :test,
@@ -40,7 +40,7 @@ defmodule InnerCotton.Mixfile do
   defp deps do
     [
       {:credo, "~> 0.9", runtime: false},
-      {:dialyxir, "~> 0.5", runtime: false},
+      {:dialyxir, "~> 1.0.0-rc.2", runtime: false},
       {:excoveralls, "~> 0.8"},
       {:ex_doc, "~> 0.18", only: :dev, runtime: false},
       {:eye_drops, "~> 1.3", runtime: false},
