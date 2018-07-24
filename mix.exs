@@ -54,7 +54,7 @@ defmodule InnerCotton.Mixfile do
   def package do
     [
       files: ["LICENSE", "README.md", "mix.exs", "lib"],
-      licenses: ["GPL-3.0-or-later"],
+      licenses: ["Unlicense"],
       links: %{
         GitHub: "https://github.com/ne-sachirou/inner_cotton"
       },
