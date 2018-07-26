@@ -21,7 +21,7 @@ defmodule Mix.Tasks.Cotton.Lint do
   @doc """
   Lint by Credo & check types by Dialyzer.
   """
-  @spec run([binary]) :: any
+  @impl true
   def run(args) do
     fix? = "--fix" in args
     Mix.Task.run("cmd", ["mix do deps.get, compile"])
@@ -35,13 +35,13 @@ defmodule Mix.Tasks.Cotton.Lint do
                   Mix.Shell.IO.cmd("mix format --check-formatted")
                 end),
               credo: Task.async(Mix.Shell.IO, :cmd, ["mix credo --strict"]),
-              dialyzer: Task.async(Mix.Shell.IO, :cmd, ["mix dialyzer --halt-exit-status"]),
-              inch:
-                Task.async(fn ->
-                  if Mix.Tasks.Docs in Mix.Task.load_all(),
-                    do: Mix.Shell.IO.cmd("mix inch --pedantic"),
-                    else: -1
-                end)
+              dialyzer: Task.async(Mix.Shell.IO, :cmd, ["mix dialyzer --halt-exit-status"])
+              # inch:
+              #   Task.async(fn ->
+              #     if Mix.Tasks.Docs in Mix.Task.load_all(),
+              #       do: Mix.Shell.IO.cmd("mix inch --pedantic"),
+              #       else: -1
+              #   end)
             ] do
         {name, Task.await(task, :infinity)}
       end

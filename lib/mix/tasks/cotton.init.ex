@@ -16,7 +16,7 @@ defmodule Mix.Tasks.Cotton.Init do
   @doc """
   Initialize or update config files.
   """
-  @spec run([binary]) :: any
+  @impl true
   def run(_args) do
     init_credo()
     init_formatter()
@@ -79,17 +79,23 @@ defmodule Mix.Tasks.Cotton.Init do
       end
 
     config =
-      config
-      |> Map.merge(%{
-        "elixir" => ~w(1.5.3 1.6.6),
+      Map.merge(config, %{
+        "elixir" => ~w(1.6.6 1.7.2),
         "otp_release" => ~w(20.3 21.0)
       })
-      |> update_in(["matrix"], &(&1 || %{"exclude" => []}))
-      |> update_in(["matrix", "exclude"], fn exclude ->
-        if Enum.any?(exclude, &(&1["elixir"] == "1.5.3" and &1["otp_release"] == "21.0")),
-          do: exclude,
-          else: [%{"elixir" => "1.5.3", "otp_release" => "21.0"} | exclude]
-      end)
+
+    config =
+      if get_in(config, ["matrix", "exclude"]) do
+        config
+        |> pop_in([
+          "matrix",
+          "exclude",
+          Access.filter(&match?(%{"elixir" => "1.5.3", "otp_release" => "21.0"}, &1))
+        ])
+        |> elem(1)
+      else
+        config
+      end
 
     yaml = "language: elixir\n" <> (config |> Map.delete("language") |> RelaxYaml.encode!(config))
     File.write!(".travis.yml", yaml)

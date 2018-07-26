@@ -14,6 +14,6 @@ defmodule Mix.Tasks.Cotton do
   @doc """
   Collection of recommended Elixir check utilities.
   """
-  @spec run([binary]) :: any
+  @impl true
   def run(_args), do: Mix.Task.run("help", ["cotton"])
 end

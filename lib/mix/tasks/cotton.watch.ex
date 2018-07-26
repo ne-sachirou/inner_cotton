@@ -10,7 +10,7 @@ defmodule Mix.Tasks.Cotton.Watch do
   @doc """
   Watch file changes then run lint & test.
   """
-  @spec run([binary]) :: any
+  @impl true
   def run(_args) do
     tasks = Application.get_env(:eye_drops, :tasks, [])
 
