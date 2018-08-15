@@ -12,7 +12,7 @@ defmodule InnerCotton.Mixfile do
         ignore_warnings: "dialyzer.ignore-warnings",
         remove_defaults: [:unknown]
       ],
-      elixir: "~> 1.5",
+      elixir: "~> 1.6",
       package: package(),
       preferred_cli_env: [
         coveralls: :test,
@@ -39,12 +39,12 @@ defmodule InnerCotton.Mixfile do
 
   defp deps do
     [
-      {:credo, "~> 0.9", runtime: false},
+      {:credo, "~> 0.10", runtime: false},
       {:dialyxir, "~> 0.5", runtime: false},
-      {:excoveralls, "~> 0.8"},
-      {:ex_doc, "~> 0.18", only: :dev, runtime: false},
+      {:excoveralls, "~> 0.9"},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:eye_drops, "~> 1.3", runtime: false},
-      {:inch_ex, "~> 0.5", runtime: false},
+      {:inch_ex, "~> 1.0", runtime: false},
       {:relax_yaml,
        github: "ne-sachirou/relax_yaml", branch: "feature/update_yamerl", runtime: false},
       {:stream_data, "~> 0.4"}
