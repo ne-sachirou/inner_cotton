@@ -80,7 +80,7 @@ defmodule Mix.Tasks.Cotton.Init do
 
     config =
       Map.merge(config, %{
-        "elixir" => ~w(1.6.6 1.7.2),
+        "elixir" => ~w(1.6 1.7),
         "otp_release" => ~w(20.3 21.0)
       })
 
