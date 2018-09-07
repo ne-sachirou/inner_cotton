@@ -22,7 +22,7 @@ defmodule InnerCotton.Mixfile do
       ],
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
-      version: "0.2.2",
+      version: "0.3.1",
 
       # Docs
       docs: [
@@ -44,9 +44,8 @@ defmodule InnerCotton.Mixfile do
       {:excoveralls, "~> 0.9"},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:eye_drops, "~> 1.3", runtime: false},
+      {:fast_yaml, "~> 1.0"},
       {:inch_ex, "~> 1.0", runtime: false},
-      {:relax_yaml,
-       github: "ne-sachirou/relax_yaml", branch: "feature/update_yamerl", runtime: false},
       {:stream_data, "~> 0.4"}
     ]
   end

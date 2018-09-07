@@ -7,8 +7,6 @@ defmodule Mix.Tasks.Cotton.Init do
   * .travis.yml
   """
 
-  alias RelaxYaml.Decoder
-
   use Mix.Task
 
   @shortdoc "Initialize or update config files"
@@ -69,35 +67,38 @@ defmodule Mix.Tasks.Cotton.Init do
 
   defp init_travis do
     IO.puts("Initialize .travis.yml")
-    {:ok, _} = Application.ensure_all_started(:yamerl)
+    {:ok, _} = Application.ensure_all_started(:fast_yaml)
     File.touch!(".travis.yml")
 
     config =
-      case Decoder.read_from_file(".travis.yml") do
-        [] -> %{}
-        config -> config
+      case :fast_yaml.decode_from_file('.travis.yml', [:plain_as_atom]) do
+        {:ok, [config]} -> config
+        _ -> []
       end
 
-    config =
-      Map.merge(config, %{
-        "elixir" => ~w(1.6 1.7),
-        "otp_release" => ~w(20.3 21.0)
-      })
+    config = Keyword.merge(config, elixir: ~w(1.6 1.7), otp_release: ~w(20.3 21.0))
 
     config =
-      if get_in(config, ["matrix", "exclude"]) do
+      if get_in(config, [:matrix, :exclude]) do
         config
         |> pop_in([
-          "matrix",
-          "exclude",
-          Access.filter(&match?(%{"elixir" => "1.5.3", "otp_release" => "21.0"}, &1))
+          :matrix,
+          :exclude,
+          Access.filter(&(&1[:elixir] == "1.5.3" and &1[:otp_release] == "21.0"))
         ])
         |> elem(1)
       else
         config
       end
 
-    yaml = "language: elixir\n" <> (config |> Map.delete("language") |> RelaxYaml.encode!(config))
+    yaml =
+      "language: elixir\n" <>
+        (config
+         |> Keyword.delete(:language)
+         |> :fast_yaml.encode()
+         |> :erlang.iolist_to_iovec()
+         |> hd)
+
     File.write!(".travis.yml", yaml)
   end
 end
