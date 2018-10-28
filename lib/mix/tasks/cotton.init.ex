@@ -42,7 +42,7 @@ defmodule Mix.Tasks.Cotton.Init do
       [
         inputs: ["mix.exs", "{config,lib,test}/**/*.{ex,exs}"],
         export: [
-          line_length: 80,
+          line_length: 120,
           locals_without_parens: []
         ],
       ]
@@ -76,7 +76,7 @@ defmodule Mix.Tasks.Cotton.Init do
         _ -> []
       end
 
-    config = Keyword.merge(config, elixir: ~w(1.6 1.7), otp_release: ~w(20.3 21.0))
+    config = Keyword.merge(config, elixir: ~w(1.6 1.7), otp_release: ~w(20.3 21.1))
 
     config =
       if get_in(config, [:matrix, :exclude]) do

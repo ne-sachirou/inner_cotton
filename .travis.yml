@@ -1,9 +1,12 @@
 language: elixir
-matrix:
+matrix: 
   exclude: []
-elixir:
+script: 
+  - mix cotton.lint
+  - mix coveralls.travis
+elixir: 
   - "1.6"
   - "1.7"
-otp_release:
+otp_release: 
   - "20.3"
-  - "21.0"
+  - "21.1"
