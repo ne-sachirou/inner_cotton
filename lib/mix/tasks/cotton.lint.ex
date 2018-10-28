@@ -60,8 +60,14 @@ defmodule Mix.Tasks.Cotton.Lint do
     |> Execution.get_assign("credo.exit_status", 0)
   end
 
-  defp check_inch(facts),
-    do: if(facts.docs?, do: Mix.Shell.IO.cmd("mix inch --pedantic"), else: -1)
+  defp check_inch(%{docs?: false}), do: -1
+
+  defp check_inch(_) do
+    alias InchEx.CLI
+
+    CLI.main(["--pedantic"])
+    0
+  end
 
   @spec gather_facts([binary]) :: facts
   defp gather_facts(args) do
