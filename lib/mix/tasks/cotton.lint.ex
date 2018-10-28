@@ -31,7 +31,7 @@ defmodule Mix.Tasks.Cotton.Lint do
 
     {[], gather_facts(args)}
     |> check_async(:format, &check_format/1)
-    |> check_async(:credo, Task.async(Mix.Shell.IO, :cmd, ["mix credo --strict"]))
+    |> check_async(:credo, &check_credo/1)
     |> check_async(
       :dialyzer,
       Task.async(Mix.Shell.IO, :cmd, ["mix dialyzer --halt-exit-status"])
@@ -46,6 +46,20 @@ defmodule Mix.Tasks.Cotton.Lint do
     Mix.Shell.IO.cmd("mix format --check-formatted")
   end
 
+  defp check_credo(_) do
+    alias Credo.Application
+    alias Credo.Execution
+    alias Credo.Execution.Task.WriteDebugReport
+    alias Credo.MainProcess
+
+    Application.start(nil, nil)
+
+    %Execution{argv: ["--strict"]}
+    |> MainProcess.call()
+    |> WriteDebugReport.call([])
+    |> Execution.get_assign("credo.exit_status", 0)
+  end
+
   defp check_inch(facts),
     do: if(facts.docs?, do: Mix.Shell.IO.cmd("mix inch --pedantic"), else: -1)
 
@@ -57,7 +71,7 @@ defmodule Mix.Tasks.Cotton.Lint do
     }
   end
 
-  @spec check_async({tasks, facts}, atom, (facts -> any) | Task.t()) :: {tasks, facts}
+  @spec check_async({tasks, facts}, atom, (facts -> integer) | Task.t()) :: {tasks, facts}
   defp check_async({tasks, facts}, name, %Task{} = task), do: {[{name, task} | tasks], facts}
 
   defp check_async({tasks, facts}, name, fun),
