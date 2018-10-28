@@ -18,34 +18,57 @@ defmodule Mix.Tasks.Cotton.Lint do
 
   @shortdoc "Lint by Credo & check types by Dialyzer"
 
+  @type facts :: map
+  @type results :: keyword(integer)
+  @type tasks :: keyword(Task.t())
+
   @doc """
   Lint by Credo & check types by Dialyzer.
   """
   @impl true
   def run(args) do
-    fix? = "--fix" in args
     Mix.Task.run("cmd", ["mix do deps.get, compile"])
 
-    results =
-      for {name, task} <-
-            [
-              format:
-                Task.async(fn ->
-                  if fix?, do: Mix.Shell.IO.cmd("mix format --check-equivalent")
-                  Mix.Shell.IO.cmd("mix format --check-formatted")
-                end),
-              credo: Task.async(Mix.Shell.IO, :cmd, ["mix credo --strict"]),
-              dialyzer: Task.async(Mix.Shell.IO, :cmd, ["mix dialyzer --halt-exit-status"]),
-              inch:
-                Task.async(fn ->
-                  if Mix.Tasks.Docs in Mix.Task.load_all(),
-                    do: Mix.Shell.IO.cmd("mix inch --pedantic"),
-                    else: -1
-                end)
-            ] do
-        {name, Task.await(task, :infinity)}
-      end
+    {[], gather_facts(args)}
+    |> check_async(:format, &check_format/1)
+    |> check_async(:credo, Task.async(Mix.Shell.IO, :cmd, ["mix credo --strict"]))
+    |> check_async(
+      :dialyzer,
+      Task.async(Mix.Shell.IO, :cmd, ["mix dialyzer --halt-exit-status"])
+    )
+    |> check_async(:inch, &check_inch/1)
+    |> await_checks
+    |> print_check_results
+  end
 
+  defp check_format(facts) do
+    if facts.fix?, do: Mix.Shell.IO.cmd("mix format --check-equivalent")
+    Mix.Shell.IO.cmd("mix format --check-formatted")
+  end
+
+  defp check_inch(facts),
+    do: if(facts.docs?, do: Mix.Shell.IO.cmd("mix inch --pedantic"), else: -1)
+
+  @spec gather_facts([binary]) :: facts
+  defp gather_facts(args) do
+    %{
+      docs?: Mix.Tasks.Docs in Mix.Task.load_all(),
+      fix?: "--fix" in args
+    }
+  end
+
+  @spec check_async({tasks, facts}, atom, (facts -> any) | Task.t()) :: {tasks, facts}
+  defp check_async({tasks, facts}, name, %Task{} = task), do: {[{name, task} | tasks], facts}
+
+  defp check_async({tasks, facts}, name, fun),
+    do: check_async({tasks, facts}, name, Task.async(fn -> fun.(facts) end))
+
+  @spec await_checks({tasks, facts}) :: results
+  defp await_checks({tasks, _}),
+    do: for({name, task} <- Enum.reverse(tasks), do: {name, Task.await(task, :infinity)})
+
+  @spec print_check_results(results) :: any
+  defp print_check_results(results) do
     label_length =
       results |> Keyword.keys() |> Enum.map(&(&1 |> to_string |> String.length())) |> Enum.max()
 

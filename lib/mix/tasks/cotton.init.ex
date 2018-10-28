@@ -54,14 +54,7 @@ defmodule Mix.Tasks.Cotton.Init do
     IO.puts("Initialize .gitignore")
     File.touch(".gitignore")
     config = File.read!(".gitignore")
-
-    config =
-      if String.match?(config, ~r{^/docs$}m) do
-        config
-      else
-        config <> "\n/docs\n"
-      end
-
+    config = if String.match?(config, ~r{^/docs$}m), do: config, else: config <> "\n/docs\n"
     File.write!(".gitignore", config)
   end
 
@@ -92,12 +85,9 @@ defmodule Mix.Tasks.Cotton.Init do
       end
 
     yaml =
-      "language: elixir\n" <>
-        (config
-         |> Keyword.delete(:language)
-         |> :fast_yaml.encode()
-         |> :erlang.iolist_to_iovec()
-         |> hd)
+      :erlang.iolist_to_binary([
+        "language: elixir\n" | config |> Keyword.delete(:language) |> :fast_yaml.encode()
+      ])
 
     File.write!(".travis.yml", yaml)
   end
