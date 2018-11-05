@@ -27,7 +27,7 @@ defmodule Mix.Tasks.Cotton.Lint do
   """
   @impl true
   def run(args) do
-    Mix.Task.run("cmd", ["mix do deps.get, compile"])
+    Mix.Task.run("cmd", ["mix compile"])
 
     {[], gather_facts(args)}
     |> check_async(:format, &check_format/1)
@@ -36,7 +36,7 @@ defmodule Mix.Tasks.Cotton.Lint do
       :dialyzer,
       Task.async(Mix.Shell.IO, :cmd, ["mix dialyzer --halt-exit-status"])
     )
-    |> check_async(:inch, &check_inch/1)
+    # |> check_async(:inch, &check_inch/1)
     |> await_checks
     |> print_check_results
   end
@@ -47,12 +47,12 @@ defmodule Mix.Tasks.Cotton.Lint do
   end
 
   defp check_credo(_) do
-    alias Credo.Application
     alias Credo.Execution
     alias Credo.Execution.Task.WriteDebugReport
     alias Credo.MainProcess
 
-    Application.start(nil, nil)
+    {:ok, _} = Application.ensure_all_started(:credo)
+    Credo.Application.start(nil, nil)
 
     %Execution{argv: ["--strict"]}
     |> MainProcess.call()
@@ -60,14 +60,15 @@ defmodule Mix.Tasks.Cotton.Lint do
     |> Execution.get_assign("credo.exit_status", 0)
   end
 
-  defp check_inch(%{docs?: false}), do: -1
+  # defp check_inch(%{docs?: false}), do: -1
 
-  defp check_inch(_) do
-    alias InchEx.CLI
+  # defp check_inch(_) do
+  #   alias InchEx.CLI
 
-    CLI.main(["--pedantic"])
-    0
-  end
+  #   {:ok, _} = Application.ensure_all_started(:inch_ex)
+  #   CLI.main(["--pedantic"])
+  #   0
+  # end
 
   @spec gather_facts([binary]) :: facts
   defp gather_facts(args) do

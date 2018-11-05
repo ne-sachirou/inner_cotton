@@ -47,7 +47,7 @@ defmodule InnerCotton.Mixfile do
       {:eye_drops, "~> 1.3", runtime: false},
       {:fast_yaml, "~> 1.0"},
       # {:inch_ex, "~> 1.0", runtime: false},
-      {:inch_ex, github: "rrrene/inch_ex", runtime: false},
+      # {:inch_ex, github: "rrrene/inch_ex", runtime: false},
       {:stream_data, "~> 0.4"}
     ]
   end
