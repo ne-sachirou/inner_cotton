@@ -5,7 +5,7 @@ defmodule InnerCotton.Mixfile do
     [
       app: :inner_cotton,
       build_embedded: Mix.env() == :prod,
-      deps: deps(),
+      deps: deps(Mix.env()),
       description: "Collection of recommended Elixir check utilities.",
       dialyzer: [
         flags: [:no_undefined_callbacks],
@@ -38,17 +38,23 @@ defmodule InnerCotton.Mixfile do
 
   def application, do: [extra_applications: []]
 
-  defp deps do
+  defp deps(:publish) do
     [
-      {:credo, "~> 0.10", runtime: false},
+      {:credo, "~> 1.0", runtime: false},
       {:dialyxir, "~> 0.5", runtime: false},
       {:excoveralls, "~> 0.9"},
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:eye_drops, "~> 1.3", runtime: false},
       {:fast_yaml, "~> 1.0"},
       # {:inch_ex, "~> 1.0", runtime: false},
       # {:inch_ex, github: "rrrene/inch_ex", runtime: false},
       {:stream_data, "~> 0.4"}
+    ]
+  end
+
+  defp deps(_) do
+    [
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
+      | deps(:publish)
     ]
   end
 
