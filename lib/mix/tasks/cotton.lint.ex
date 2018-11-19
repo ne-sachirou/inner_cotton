@@ -1,6 +1,6 @@
 defmodule Mix.Tasks.Cotton.Lint do
   @moduledoc """
-  Run following checks.
+  Lint by Credo & check types by Dialyzer. Run following checks.
 
   ```
   mix format --check-formatted
@@ -11,7 +11,7 @@ defmodule Mix.Tasks.Cotton.Lint do
 
   Option:
 
-  --fix : Auto correct errors if available.
+  * `--fix`: Auto correct errors if available.
   """
 
   use Mix.Task
@@ -22,10 +22,7 @@ defmodule Mix.Tasks.Cotton.Lint do
   @type results :: keyword(integer)
   @type tasks :: keyword(Task.t())
 
-  @doc """
-  Lint by Credo & check types by Dialyzer.
-  """
-  @impl true
+  @impl Mix.Task
   def run(args) do
     Mix.Task.run("cmd", ["mix compile"])
 

@@ -11,9 +11,6 @@ defmodule Mix.Tasks.Cotton do
 
   @shortdoc "Collection of recommended Elixir check utilities."
 
-  @doc """
-  Collection of recommended Elixir check utilities.
-  """
   @impl true
   def run(_args), do: Mix.Task.run("help", ["cotton"])
 end

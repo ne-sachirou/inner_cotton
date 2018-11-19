@@ -80,16 +80,7 @@ mix cotton.init
 
 CONTRIBUTING
 --
-1. Fork.
-1. Implement a new feature & write some tests.
-1. Create a Pull Request.
-
-Please run lint & test before commit.
-
-```sh
-mix cotton.lint
-mix test
-```
+[Maintenance policy](https://github.com/ne-sachirou/inner_cotton/wiki/Maintenance-policy)
 
 [Credo]: https://hex.pm/packages/credo
 [Dialyxir]: https://hex.pm/packages/dialyxir
