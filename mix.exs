@@ -10,6 +10,7 @@ defmodule InnerCotton.Mixfile do
       dialyzer: [
         flags: [:no_undefined_callbacks],
         ignore_warnings: "dialyzer.ignore-warnings",
+        plt_core_path: "_build",
         remove_defaults: [:unknown]
       ],
       elixir: "~> 1.7",
