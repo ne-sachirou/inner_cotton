@@ -19,7 +19,7 @@ defmodule InnerCotton.Updater.Travis do
 
     config =
       config
-      |> Map.merge(%{elixir: ~w(1.7 1.8), otp_release: ~w(20.3 21.2)})
+      |> Map.merge(%{elixir: ~w(1.7 1.8), otp_release: ~w(21.3 22.0)})
       |> rm_old_matrix_exclude_153
       |> add_coveralls_travis
 
