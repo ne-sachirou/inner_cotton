@@ -46,13 +46,13 @@ defmodule Mix.Tasks.Cotton.Lint do
   defp check_credo(_) do
     alias Credo.Execution
     alias Credo.Execution.Task.WriteDebugReport
-    alias Credo.MainProcess
 
     {:ok, _} = Application.ensure_all_started(:credo)
     Credo.Application.start(nil, nil)
 
-    %Execution{argv: ["--strict"]}
-    |> MainProcess.call()
+    ["--strict"]
+    |> Execution.build()
+    |> Execution.run()
     |> WriteDebugReport.call([])
     |> Execution.get_assign("credo.exit_status", 0)
   end
