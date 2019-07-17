@@ -13,7 +13,7 @@ defmodule InnerCotton.Mixfile do
         plt_core_path: "_build",
         remove_defaults: [:unknown]
       ],
-      elixir: "~> 1.7",
+      elixir: "~> 1.8",
       package: package(),
       preferred_cli_env: [
         coveralls: :test,
