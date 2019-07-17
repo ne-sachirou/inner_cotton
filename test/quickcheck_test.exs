@@ -3,7 +3,7 @@ defmodule InnerCotton.QuickCheckTest do
   use ExUnitProperties
 
   property "QuickCheck is enabled" do
-    check all i <- integer() do
+    check all(i <- integer()) do
       assert is_integer(i)
     end
   end
