@@ -8,8 +8,8 @@ defmodule InnerCotton.Mixfile do
       deps: deps(Mix.env()),
       description: "Collection of recommended Elixir check utilities.",
       dialyzer: [
-        flags: [:no_undefined_callbacks],
         ignore_warnings: "dialyzer.ignore-warnings",
+        plt_add_apps: [:mix],
         plt_core_path: "_build",
         remove_defaults: [:unknown]
       ],
