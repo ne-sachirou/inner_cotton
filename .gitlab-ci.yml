@@ -1,0 +1,33 @@
+---
+stages:
+  - test
+
+.test: &test
+  stage: test
+  image: nesachirou/elixir:${IMAGE}
+  script:
+    - apk add --no-cache build-base yaml-dev
+    - mix "do" deps.get, cotton.lint
+    - mix coveralls
+  cache:
+    key: $IMAGE
+    paths:
+      - _build
+      - deps
+
+test-1.9_erl21:
+  <<: *test
+  variables:
+    IMAGE: 1.9_erl21
+test-1.9_erl22:
+  <<: *test
+  variables:
+    IMAGE: 1.9_erl22
+test-1.10_erl21:
+  <<: *test
+  variables:
+    IMAGE: 1.10_erl21
+test-1.10_erl22:
+  <<: *test
+  variables:
+    IMAGE: 1.10_erl22

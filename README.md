@@ -3,6 +3,7 @@ InnerCotton
 Collection of recommended Elixir check utilities.
 
 [![Hex.pm](https://img.shields.io/hexpm/v/inner_cotton.svg)](https://hex.pm/packages/inner_cotton)
+[![Actions Status](https://github.com/ne-sachirou/inner_cotton/workflows/test/badge.svg)](https://github.com/ne-sachirou/inner_cotton/actions)
 [![Coverage Status](https://coveralls.io/repos/github/ne-sachirou/inner_cotton/badge.svg)](https://coveralls.io/github/ne-sachirou/inner_cotton)
 
 InnerCotton is a collection of recommended Elixir check utilities. It contains,
