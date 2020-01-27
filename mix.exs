@@ -13,7 +13,7 @@ defmodule InnerCotton.Mixfile do
         plt_core_path: "_build",
         remove_defaults: [:unknown]
       ],
-      elixir: "~> 1.8",
+      elixir: "~> 1.9",
       package: package(),
       preferred_cli_env: [
         coveralls: :test,
@@ -24,7 +24,7 @@ defmodule InnerCotton.Mixfile do
       ],
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
-      version: "0.5.1",
+      version: "0.6.0",
 
       # Docs
       docs: [
@@ -46,8 +46,7 @@ defmodule InnerCotton.Mixfile do
       {:excoveralls, "~> 0.9"},
       {:eye_drops, "~> 1.3", runtime: false},
       {:fast_yaml, "~> 1.0"},
-      # {:inch_ex, "~> 1.0", runtime: false},
-      # {:inch_ex, github: "rrrene/inch_ex", runtime: false},
+      {:inch_ex, "~> 2.0", runtime: false},
       {:stream_data, "~> 0.4"}
     ]
   end

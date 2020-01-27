@@ -4,13 +4,13 @@ cache:
     - "_build"
     - "deps"
 elixir: 
-  - "1.8"
   - "1.9"
+  - "1.10"
 matrix: 
   exclude: []
 otp_release: 
   - "21.3"
-  - "22.0"
+  - "22.2"
 script: 
   - "mix cotton.lint"
   - "mix coveralls.travis"
