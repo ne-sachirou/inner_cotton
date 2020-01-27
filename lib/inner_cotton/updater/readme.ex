@@ -18,7 +18,6 @@ defmodule InnerCotton.Updater.Readme do
       @readme_path
       |> File.read!()
       |> add_hexpm
-      |> add_travis
       |> add_coveralls
 
     File.write!(@readme_path, readme)
@@ -29,14 +28,6 @@ defmodule InnerCotton.Updater.Readme do
       "[![Hex.pm](https://img.shields.io/hexpm/v/PROJECT_NAME.svg)](https://hex.pm/packages/PROJECT_NAME)"
 
     flake = "[![Hex.pm](https://img.shields.io/hexpm/v/"
-    add_line(readme, line, flake)
-  end
-
-  defp add_travis(readme) do
-    line =
-      "[![Build Status](https://travis-ci.org/AUTHOR_NAME/PROJECT_NAME.svg?branch=master)](https://travis-ci.org/AUTHOR_NAME/PROJECT_NAME)"
-
-    flake = "[![Build Status](https://travis-ci.org/"
     add_line(readme, line, flake)
   end
 

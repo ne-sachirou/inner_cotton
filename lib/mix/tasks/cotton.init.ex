@@ -6,15 +6,14 @@ defmodule Mix.Tasks.Cotton.Init do
   * .formatter.exs
   * .gitignore
   * README.md
-  * .travis.yml
   """
 
-  alias InnerCotton.Updater.{Credo, Formatter, Gitignore, Readme, Travis}
+  alias InnerCotton.Updater.{Credo, Formatter, Gitignore, Readme}
 
   use Mix.Task
 
   @shortdoc "Initialize or update config files"
 
   @impl Mix.Task
-  def run(_args), do: Enum.map([Credo, Formatter, Gitignore, Readme, Travis], & &1.update())
+  def run(_args), do: Enum.map([Credo, Formatter, Gitignore, Readme], & &1.update())
 end
