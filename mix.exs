@@ -44,7 +44,6 @@ defmodule InnerCotton.Mixfile do
       {:dialyxir, "~> 0.5", runtime: false},
       {:excoveralls, "~> 0.9"},
       {:eye_drops, "~> 1.3", runtime: false},
-      {:fast_yaml, "~> 1.0"},
       {:inch_ex, "~> 2.0", runtime: false},
       {:stream_data, "~> 0.4"}
     ]

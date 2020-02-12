@@ -6,7 +6,6 @@ stages:
   stage: test
   image: nesachirou/elixir:${IMAGE}
   script:
-    - apk add --no-cache build-base yaml-dev
     - mix "do" deps.get, cotton.lint
     - mix coveralls
   cache:

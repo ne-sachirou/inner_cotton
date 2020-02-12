@@ -31,8 +31,6 @@ jobs:
           key: ${{ matrix.elixir }}_erl${{ matrix.erlang }}
       - name: Lint & test
         run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential libyaml-dev
           mix "do" local.hex --force, local.rebar --force
           mix "do" deps.get, cotton.lint
           mix coveralls.github
