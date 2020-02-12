@@ -2,8 +2,8 @@ InnerCotton
 ==
 Collection of recommended Elixir check utilities.
 
-[![Hex.pm](https://img.shields.io/hexpm/v/inner_cotton.svg)](https://hex.pm/packages/inner_cotton)
 [![Actions Status](https://github.com/ne-sachirou/inner_cotton/workflows/test/badge.svg)](https://github.com/ne-sachirou/inner_cotton/actions)
+[![Hex.pm](https://img.shields.io/hexpm/v/inner_cotton.svg)](https://hex.pm/packages/inner_cotton)
 [![Coverage Status](https://coveralls.io/repos/github/ne-sachirou/inner_cotton/badge.svg)](https://coveralls.io/github/ne-sachirou/inner_cotton)
 
 InnerCotton is a collection of recommended Elixir check utilities. It contains,
@@ -12,6 +12,8 @@ InnerCotton is a collection of recommended Elixir check utilities. It contains,
 * [Dialyxir][Dialyxir] : Type checker using Dialyzer.
 * [ExCoveralls][ExCoveralls] : Mesure test coverage.
 * [EyeDrops][EyeDrops] : File change watcher.
+* [GitHub Actions][GitHub Actions] : GitHub bundled CI/CD.
+* [GitLab CI][GitLab CI] : GitLab bundled CI/CD.
 * [InchEx][InchEx] : Document (ExDoc) improver.
 * [mix format][formatter] : Community standard code formatter.
 * [stream_data][stream_data] : Property base testing like QuickCheck.
@@ -86,6 +88,8 @@ CONTRIBUTING
 [Dialyxir]: https://hex.pm/packages/dialyxir
 [ExCoveralls]: https://hex.pm/packages/excoveralls
 [EyeDrops]: https://hex.pm/packages/eye_drops
-[formatter]: https://hexdocs.pm/elixir/Code.html#format_string!/2
+[GitHub Actions]: https://github.co.jp/features/actions
+[GitLab CI]: https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/
 [InchEx]: https://hex.pm/packages/inch_ex
+[formatter]: https://hexdocs.pm/elixir/Code.html#format_string!/2
 [stream_data]: https://hex.pm/packages/stream_data

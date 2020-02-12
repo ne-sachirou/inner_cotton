@@ -17,10 +17,19 @@ defmodule InnerCotton.Updater.Readme do
     readme =
       @readme_path
       |> File.read!()
+      |> add_github_actions
       |> add_hexpm
       |> add_coveralls
 
     File.write!(@readme_path, readme)
+  end
+
+  defp add_github_actions(readme) do
+    line =
+      "[![Actions Status](https://github.com/AUTHER_NAME/PROJECT_NAME/workflows/test/badge.svg)](https://github.com/AUTHER_NAME/PROJECT_NAME/actions)"
+
+    flake = "[![Actions Status](https://github.com/"
+    add_line(readme, line, flake)
   end
 
   defp add_hexpm(readme) do
