@@ -1,0 +1,15 @@
+---
+language: elixir
+cache:
+  directories:
+    - "_build"
+    - "deps"
+elixir:
+  - "1.9"
+  - "1.10"
+otp_release:
+  - "21.3"
+  - "22.2"
+script:
+  - "mix cotton.lint"
+  - "mix coveralls.travis"

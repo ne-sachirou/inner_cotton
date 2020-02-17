@@ -19,7 +19,8 @@ defmodule InnerCotton.Mixfile do
         coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.github": :test,
-        "coveralls.html": :test
+        "coveralls.html": :test,
+        "coveralls.travis": :test
       ],
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],

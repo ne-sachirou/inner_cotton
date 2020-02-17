@@ -1,6 +1,6 @@
-defmodule InnerCotton.Updater.GitLabCI do
+defmodule InnerCotton.Updater.TravisCI do
   @moduledoc """
-  Init or update `.gitlab-ci.yml`.
+  Init or update `.travis.yml`.
   """
 
   alias InnerCotton.Updater
@@ -10,11 +10,11 @@ defmodule InnerCotton.Updater.GitLabCI do
 
   @impl Updater
   def update do
-    IO.puts("Initialize .gitlab-ci.yml")
+    IO.puts("Initialize .travis.yml")
 
     File.cp!(
-      Path.join(:code.priv_dir(:inner_cotton), ".gitlab-ci.yml"),
-      Path.join(File.cwd!(), ".gitlab-ci.yml")
+      Path.join(:code.priv_dir(:inner_cotton), ".travis.yml"),
+      Path.join(File.cwd!(), ".travis.yml")
     )
 
     add_badge()
@@ -22,8 +22,8 @@ defmodule InnerCotton.Updater.GitLabCI do
 
   defp add_badge do
     Readme.add_line(
-      "[![Pipelines](https://gitlab.com/AUTHER_NAME/PROJECT_NAME/badges/master/pipeline.svg)](https://gitlab.com/AUTHER_NAME/PROJECT_NAME/pipelines)",
-      "[![Pipelines](https://gitlab.com/"
+      "[![Build Status](https://travis-ci.com/AUTHOR_NAME/PROJECT_NAME.svg?branch=master)](https://travis-ci.org/AUTHOR_NAME/PROJECT_NAME)",
+      "[![Build Status](https://travis-ci.com/"
     )
 
     Readme.add_line(
