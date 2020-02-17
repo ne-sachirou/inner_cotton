@@ -18,9 +18,9 @@ defmodule InnerCotton.Mixfile do
       preferred_cli_env: [
         coveralls: :test,
         "coveralls.detail": :test,
-        "coveralls.post": :test,
-        "coveralls.travis": :test,
-        "coveralls.html": :test
+        "coveralls.github": :test,
+        "coveralls.html": :test,
+        "coveralls.travis": :test
       ],
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
@@ -45,7 +45,6 @@ defmodule InnerCotton.Mixfile do
       {:dialyxir, "~> 0.5", runtime: false},
       {:excoveralls, "~> 0.9"},
       {:eye_drops, "~> 1.3", runtime: false},
-      {:fast_yaml, "~> 1.0"},
       {:inch_ex, "~> 2.0", runtime: false},
       {:stream_data, "~> 0.4"}
     ]
@@ -60,7 +59,7 @@ defmodule InnerCotton.Mixfile do
 
   def package do
     [
-      files: ["LICENSE", "README.md", "mix.exs", "lib"],
+      files: ["LICENSE", "README.md", "mix.exs", "lib", "priv"],
       licenses: ["Unlicense"],
       links: %{
         GitHub: "https://github.com/ne-sachirou/inner_cotton"
