@@ -11,7 +11,7 @@ defmodule InnerCotton.Updater.GitHubActions do
   @impl Updater
   def update do
     IO.puts("Initialize .github/workflows/test.yml")
-    File.mkdir_p!(Path.join(File.cwd!(), ".github.workflows"))
+    File.mkdir_p!(Path.join(File.cwd!(), ".github/workflows"))
 
     File.cp!(
       Path.join(:code.priv_dir(:inner_cotton), ".github-workflows-test.yml"),
