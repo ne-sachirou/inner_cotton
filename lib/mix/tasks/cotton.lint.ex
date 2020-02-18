@@ -62,6 +62,7 @@ defmodule Mix.Tasks.Cotton.Lint do
   defp check_inch(_) do
     alias InchEx.CLI
 
+    Mix.Task.run("compile")
     {:ok, _} = Application.ensure_all_started(:inch_ex)
     CLI.main(["--pedantic"])
     0
