@@ -6,7 +6,7 @@
 
 # InnerCotton
 
-Collection of recommended Elixir check utilities.
+Collection of recommended Elixir check utilities, and mix tasks to help initializing and maintaining OSS/production codes.
 
 InnerCotton is a collection of recommended Elixir check utilities. It contains,
 
