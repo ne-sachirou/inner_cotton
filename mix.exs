@@ -42,7 +42,7 @@ defmodule InnerCotton.Mixfile do
   defp deps(:publish) do
     [
       {:credo, "~> 1.0", runtime: false},
-      {:dialyxir, "~> 0.5", runtime: false},
+      {:dialyxir, "~> 1.0", runtime: false},
       {:excoveralls, "~> 0.9"},
       {:eye_drops, "~> 1.3", runtime: false},
       {:inch_ex, "~> 2.0", runtime: false},
