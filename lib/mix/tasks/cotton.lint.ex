@@ -31,7 +31,7 @@ defmodule Mix.Tasks.Cotton.Lint do
     |> check_async(:credo, &check_credo/1)
     |> check_async(
       :dialyzer,
-      Task.async(Mix.Shell.IO, :cmd, ["mix dialyzer --halt-exit-status"])
+      Task.async(Mix.Shell.IO, :cmd, ["mix dialyzer"])
     )
     |> check_async(:inch, &check_inch/1)
     |> await_checks

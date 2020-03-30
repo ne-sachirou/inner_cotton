@@ -9,7 +9,6 @@ defmodule InnerCotton.Mixfile do
       description: "Collection of recommended Elixir check utilities.",
       dialyzer: [
         ignore_warnings: "dialyzer.ignore-warnings",
-        plt_add_apps: [:mix],
         plt_core_path: "_build",
         remove_defaults: [:unknown]
       ],
@@ -37,12 +36,12 @@ defmodule InnerCotton.Mixfile do
     ]
   end
 
-  def application, do: [extra_applications: []]
+  def application, do: [extra_applications: [:mix]]
 
   defp deps(:publish) do
     [
       {:credo, "~> 1.0", runtime: false},
-      {:dialyxir, "~> 0.5", runtime: false},
+      {:dialyxir, "~> 1.0", runtime: false},
       {:excoveralls, "~> 0.9"},
       {:eye_drops, "~> 1.3", runtime: false},
       {:inch_ex, "~> 2.0", runtime: false},
