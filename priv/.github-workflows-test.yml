@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         elixir: ['1.9.x', '1.10.x']
-        erlang: ['21.x', '22.x']
+        erlang: ['22.x', '23.x']
         os: [ubuntu-latest]
     name: test
     steps:
