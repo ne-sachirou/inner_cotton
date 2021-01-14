@@ -22,7 +22,7 @@ defmodule InnerCotton.Updater.TravisCI do
 
   defp add_badge do
     Readme.add_line(
-      "[![Build Status](https://travis-ci.com/AUTHOR_NAME/PROJECT_NAME.svg?branch=master)](https://travis-ci.org/AUTHOR_NAME/PROJECT_NAME)",
+      "[![Build Status](https://travis-ci.com/AUTHOR_NAME/PROJECT_NAME.svg?branch=master)](https://travis-ci.com/AUTHOR_NAME/PROJECT_NAME)",
       "[![Build Status](https://travis-ci.com/"
     )
 

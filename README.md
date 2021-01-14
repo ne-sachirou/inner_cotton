@@ -1,5 +1,5 @@
 [![Actions Status](https://github.com/ne-sachirou/inner_cotton/workflows/test/badge.svg)](https://github.com/ne-sachirou/inner_cotton/actions)
-[![Build Status](https://travis-ci.com/ne-sachirou/inner_cotton.svg?branch=master)](https://travis-ci.org/ne-sachirou/inner_cotton)
+[![Build Status](https://travis-ci.com/ne-sachirou/inner_cotton.svg?branch=master)](https://travis-ci.com/ne-sachirou/inner_cotton)
 [![Coverage Status](https://coveralls.io/repos/github/ne-sachirou/inner_cotton/badge.svg)](https://coveralls.io/github/ne-sachirou/inner_cotton)
 [![Hex.pm](https://img.shields.io/hexpm/v/inner_cotton.svg)](https://hex.pm/packages/inner_cotton)
 [![Pipelines](https://gitlab.com/ne_sachirou/inner_cotton/badges/master/pipeline.svg)](https://gitlab.com/ne_sachirou/inner_cotton/pipelines)
