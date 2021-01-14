@@ -1,5 +1,7 @@
 ---
-'on':
+name: test
+
+"on":
   pull_request:
   push:
     branches:
@@ -13,8 +15,8 @@ jobs:
   test:
     strategy:
       matrix:
-        elixir: ['1.10.x', '1.11.x']
-        erlang: ['22.x', '23.x']
+        elixir: ["1.10.x", "1.11.x"]
+        erlang: ["22.x", "23.x"]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
