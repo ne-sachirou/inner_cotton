@@ -89,6 +89,8 @@ mix cotton.init.github
 
 `mix cotton.init.gitlab` & `mix cotton.init.travisci` are also available.
 
+`mix "do" deps.update --all, deps.clean --unused --unlock, deps.unlock --unused, hex.audit, hex.outdated, deps.compile, compile, cotton.init`
+
 ## CONTRIBUTING
 
 [Maintenance policy](https://github.com/ne-sachirou/inner_cotton/wiki/Maintenance-policy)
