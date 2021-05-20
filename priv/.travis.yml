@@ -5,11 +5,11 @@ cache:
     - "_build"
     - "deps"
 elixir:
-  - "1.10"
   - "1.11"
+  - "1.12"
 otp_release:
-  - "22.3"
   - "23.0"
+  - "24.0"
 jobs:
   exclude: []
 script:

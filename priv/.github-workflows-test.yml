@@ -15,12 +15,12 @@ jobs:
   test:
     strategy:
       matrix:
-        elixir: ["1.10.x", "1.11.x"]
-        erlang: ["22.x", "23.x"]
+        elixir: ["1.11.x", "1.12.x"]
+        erlang: ["23.x", "24.x"]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: erlef/setup-elixir@v1
+      - uses: erlef/setup-beam@v1
         with:
           elixir-version: ${{ matrix.elixir }}
           otp-version: ${{ matrix.erlang }}
@@ -36,6 +36,5 @@ jobs:
             ${{ runner.os }}-erl${{ matrix.erlang }}-
       - name: Lint & test
         run: |
-          mix "do" local.hex --force, local.rebar --force
           mix "do" deps.get, deps.clean --unused, cotton.lint
           mix coveralls.github
