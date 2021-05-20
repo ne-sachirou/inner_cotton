@@ -15,7 +15,7 @@ jobs:
   test:
     strategy:
       matrix:
-        elixir: ["1.10.x", "1.11.x"]
+        elixir: ["1.11.x", "1.12.x"]
         erlang: ["23.x", "24.x"]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
