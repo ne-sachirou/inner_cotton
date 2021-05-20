@@ -4,7 +4,6 @@ defmodule Mix.Tasks.Cotton do
 
   * `mix cotton.init` : Initialize or update config files
   * `mix cotton.lint` : Lint by Credo & check types by Dialyzer
-  * `mix cotton.watch` : Watch file changes then run lint & test
   """
 
   use Mix.Task

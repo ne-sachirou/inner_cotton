@@ -43,7 +43,7 @@ defmodule InnerCotton.Mixfile do
       {:credo, "~> 1.0", runtime: false},
       {:dialyxir, "~> 1.0", runtime: false},
       {:excoveralls, "~> 0.9"},
-      {:inch_ex, "~> 2.0", runtime: false},
+      # {:inch_ex, "~> 2.0", runtime: false},
       {:stream_data, "~> 0.4"}
     ]
   end
