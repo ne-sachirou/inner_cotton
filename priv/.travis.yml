@@ -5,8 +5,8 @@ cache:
     - "_build"
     - "deps"
 elixir:
-  - "1.11"
   - "1.12"
+  - "1.13"
 otp_release:
   - "23.0"
   - "24.0"

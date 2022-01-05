@@ -6,7 +6,8 @@ stages:
   stage: test
   image: nesachirou/elixir:${IMAGE}
   script:
-    - mix "do" deps.get, cotton.lint
+    - mix deps.get
+    - mix cotton.lint
     - mix coveralls
   cache:
     key: $IMAGE
@@ -14,14 +15,6 @@ stages:
       - _build
       - deps
 
-test-1.11_erl23:
-  <<: *test
-  variables:
-    IMAGE: 1.11_erl23
-test-1.11_erl24:
-  <<: *test
-  variables:
-    IMAGE: 1.11_erl24
 test-1.12_erl23:
   <<: *test
   variables:
@@ -30,3 +23,11 @@ test-1.12_erl24:
   <<: *test
   variables:
     IMAGE: 1.12_erl24
+test-1.13_erl23:
+  <<: *test
+  variables:
+    IMAGE: 1.13_erl23
+test-1.13_erl24:
+  <<: *test
+  variables:
+    IMAGE: 1.13_erl24
