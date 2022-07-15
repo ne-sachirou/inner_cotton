@@ -8,10 +8,12 @@ elixir:
   - "1.12"
   - "1.13"
 otp_release:
-  - "23.0"
   - "24.0"
+  - "25.0"
 jobs:
-  exclude: []
+  exclude:
+    - elixir: "1.12"
+      otp_release: "25.0"
 script:
   - "mix cotton.lint"
   - "mix coveralls.travis"

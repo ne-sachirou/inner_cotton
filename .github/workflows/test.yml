@@ -16,8 +16,11 @@ jobs:
     strategy:
       matrix:
         elixir: ["1.12.x", "1.13.x"]
-        erlang: ["23.x", "24.x"]
+        erlang: ["24.x", "25.x"]
         os: [ubuntu-latest]
+        exclude:
+          - elixir: "1.12.x"
+            erlang: "25.x"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
