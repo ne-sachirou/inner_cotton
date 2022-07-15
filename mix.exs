@@ -23,7 +23,7 @@ defmodule InnerCotton.Mixfile do
       ],
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
-      version: "0.6.6",
+      version: "0.6.7",
 
       # Docs
       docs: [
