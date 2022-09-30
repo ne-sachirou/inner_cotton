@@ -15,14 +15,6 @@ stages:
       - _build
       - deps
 
-test-1.12_erl24:
-  <<: *test
-  variables:
-    IMAGE: 1.12_erl24
-# test-1.12_erl25:
-#   <<: *test
-#   variables:
-#     IMAGE: 1.12_erl25
 test-1.13_erl24:
   <<: *test
   variables:
@@ -31,3 +23,11 @@ test-1.13_erl25:
   <<: *test
   variables:
     IMAGE: 1.13_erl25
+test-1.14_erl24:
+  <<: *test
+  variables:
+    IMAGE: 1.14_erl24
+test-1.14_erl25:
+  <<: *test
+  variables:
+    IMAGE: 1.14_erl25
