@@ -9,8 +9,8 @@ defmodule InnerCotton.Mixfile do
       description: "Collection of recommended Elixir check utilities.",
       dialyzer: [
         ignore_warnings: "dialyzer.ignore-warnings",
-        plt_core_path: "_build",
-        remove_defaults: [:unknown]
+        plt_add_apps: [:credo],
+        plt_core_path: "_build"
       ],
       elixir: "~> 1.9",
       package: package(),

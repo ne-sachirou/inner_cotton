@@ -29,17 +29,14 @@ defmodule Mix.Tasks.Cotton.Lint do
     {[], gather_facts(args)}
     |> check_async(:format, &check_format/1)
     |> check_async(:credo, &check_credo/1)
-    |> check_async(
-      :dialyzer,
-      Task.async(Mix.Shell.IO, :cmd, ["mix dialyzer"])
-    )
+    |> check_async(:dialyzer, &check_dialyzer/1)
     # |> check_async(:inch, &check_inch/1)
     |> await_checks
     |> print_check_results
   end
 
   defp check_format(facts) do
-    if facts.fix?, do: Mix.Shell.IO.cmd("mix format --check-equivalent")
+    if facts.fix?, do: Mix.Shell.IO.cmd("mix format")
     Mix.Shell.IO.cmd("mix format --check-formatted")
   end
 
@@ -56,6 +53,8 @@ defmodule Mix.Tasks.Cotton.Lint do
     |> WriteDebugReport.call([])
     |> Execution.get_assign("credo.exit_status", 0)
   end
+
+  defp check_dialyzer(_), do: Mix.Shell.IO.cmd("mix dialyzer")
 
   # defp check_inch(%{docs?: false}), do: -1
 
